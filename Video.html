@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/Video.css">
+</head>
+
+<body>
+
+    <!-- /* ------------------------- choose character 选择人物 -------------------------  */ -->
+
+    <div class="characterChoose">
+        <div class="character" data-character="1">
+            <img class="photo" src="../img/Tian.png" alt="photo1">
+        </div>
+        <div class="character" data-character="2">
+            <img class="photo" src="../img/zhe.png" alt="photo2">
+        </div>
+        <div class="character" data-character="3">
+            <img class="photo" src="../img/Fiona.png" alt="photo3">
+        </div>
+        <div class="character" data-character="4">
+            <img class="photo" src="../img/xavier.png" alt="photo4">
+        </div>
+        <div class="character" data-character="5">
+            <img class="photo" src="../img/manqi.png" alt="photo5">
+        </div>
+    </div>
+
+    <!-- 由浅变深的渐变盒子 -->
+    <div class="skipBox">
+        <h1>THE TRAP OF</h1>
+        <h1>PROPHECY</h1>
+    </div>
+
+    <!-- 跳过按钮 -->
+    <div class="skipButton"><a href="../html/Home.html">Skip</a></div>
+
+
+
+<!-- /* ------------------------- character Intro 人物介绍页 -------------------------  */ -->
+
+ <!-- 人物介绍页面 -->
+ <div id="profile" class="profile">
+    <div class="close" id="close"></div>
+    <div class="profile-header">
+        <h2 id="profile-name"></h2>
+        <h3 id="profile-title"></h3>
+    </div>
+    <div class="profile-content">
+        <p id="profile-desc"></p>
+        <p id="profile-story"></p>
+        <button class="enterStory" id="enterStory">INTERACTIVE STORY</button>
+    </div>
+</div>
+
+<!-- /* ------------------------- Playing Video 播放视频 -------------------------  */ -->
+
+    <!-- 视频播放容器 -->
+    <div class="video" id="video">
+        <div class="close-video" id="close-video"></div>
+        <div class="video-wrapper">
+            <video class="video-player" id="video-player" controls>
+                <source src="../video/story1-1.mp4" type="video/mp4">
+            </video>
+            <!-- 添加信息介绍页 -->
+            <div class="story-info" id="story-info">
+                <div class="info-content">
+                    <h2>HINT</h2>
+                    <p><b>Hot Reading</b><br>
+                        Scammers obtain your detailed information in advance through social media, public information or
+                        eavesdropping, and pretend to get your information through intuition or divine power when
+                        "reading" your fortune, making you mistakenly believe that they have extraordinary abilities.
+                    </p>
+                    <div class="location-buttons">
+                        <button class="location-btn" data-location="house">TIAN'S HOUSE</button>
+                        <button class="location-btn" data-location="street">STREET</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="../js/video.js"></script>
+
+
+
+
+</body>
+
+</html>

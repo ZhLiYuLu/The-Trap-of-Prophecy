@@ -1,0 +1,464 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(237, 237, 237);
+
+}
+
+p {
+    color: rgb(237, 237, 237);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000000;
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*  -------------------------choose character 选择人物 -------------------------  */
+
+.characterChoose {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    /* 水平排列 */
+    transition: width 0.5s ease;
+}
+
+/* 当角色介绍显示时，收缩画廊宽度 */
+.characterChoose.active {
+    width: 60%;
+}
+
+.character {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.5s ease;
+}
+
+/* 选中角色时放大该角色图片 */
+.character.active {
+    flex: 2;
+}
+
+/* 未选中角色时缩小其他图片 */
+.characterChoose.active .character:not(.active) {
+    flex: 0.5;
+}
+
+/* 微小的间隙 */
+.character+.character {
+    margin-left: 1px;
+    /* 左右间隙而非上下间隙 */
+}
+
+.photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.5) grayscale(0.3);
+    transition: filter 0.4s ease;
+}
+
+.character:hover .photo {
+    filter: brightness(1) grayscale(0);
+}
+
+.character.active .photo {
+    filter: brightness(1) grayscale(0);
+}
+
+/* 可选: 为每个照片添加微小阴影以增强视觉边界 */
+.character::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+/* 渐变盒子样式 */
+.skipBox {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    z-index: 1;
+    pointer-events: none;
+    /* 让盒子不影响鼠标事件 */
+    transition: all 0.5s ease;
+}
+
+h1 {
+    position: fixed;
+    bottom: 110px;
+    left: 50px;
+    color: rgb(241, 241, 241);
+    font-size: 110px;
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+h1:nth-child(2) {
+    position: fixed;
+    bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+/* 标题变小时的样式 */
+h1.small {
+    font-size: 30px;
+    bottom: 50px;
+    left: 40px;
+}
+
+h1:nth-child(2).small {
+    bottom: 20px;
+    left: 40px;
+}
+
+/* 跳过按钮样式 */
+.skipButton {
+    position: fixed;
+    bottom: 30px;
+    left: 95%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 8px 24px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    /* 确保按钮在渐变盒子上方 */
+}
+
+.skipButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/************************** Character Intro 人物介绍页 ************************/
+
+.profile {
+    position: fixed;
+    right: -40%;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.95);
+    z-index: 10;
+    padding: 50px 40px;
+    overflow-y: auto;
+    transition: right 0.5s ease;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.profile.active {
+    right: 0;
+}
+
+.profile-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 20px;
+}
+
+.profile-header h2 {
+    color: white;
+    font-size: 55px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.profile-header h3 {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.profile-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 20px;
+}
+
+/************************** Playing Video 视频播放 ************************/
+
+/* 体验故事按钮样式 */
+.enterStory {
+    display: inline-block;
+    margin-top: 30px;
+    background: linear-gradient(135deg, rgba(30, 70, 120, 0.9), rgba(50, 120, 180, 0.9));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-size: 17px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
+.enterStory:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+}
+
+.enterStory:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(40, 90, 150, 1), rgba(70, 150, 210, 1));
+}
+
+.enterStory:hover:before {
+    left: 100%;
+}
+
+.enterStory:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+/* 视频容器样式 */
+.video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.video.active {
+    display: flex;
+}
+
+/* 视频播放器包装容器 */
+.video-wrapper {
+    position: relative;
+    width: 1000px;
+    height: 800px;
+}
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+/************************** ask/answer question 问答问题 ************************/
+
+.question {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: white;
+    display: none;
+}
+
+.question.active {
+    display: block;
+}
+
+.ask {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.answer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.answer-button {
+    background-color: rgba(8, 80, 205, 0.8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 25px;
+    width: 45%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.answer-button:hover {
+    background-color: rgba(200, 70, 70, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/************************** close video 关闭视频 ************************/
+
+.close-video {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.close-video::before,
+.close-video::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    top: 50%;
+}
+
+.close-video::before {
+    transform: rotate(45deg);
+}
+
+.close-video::after {
+    transform: rotate(-45deg);
+}
+
+
+
+/************************** Close Intro 关闭人物介绍页 ************************/
+
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.close::before,
+.close::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    top: 50%;
+}
+
+.close::before {
+    transform: rotate(45deg);
+}
+
+.close::after {
+    transform: rotate(-45deg);
+}
+
+.story-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.story-info.active {
+    display: flex;
+    opacity: 1;
+}
+
+.info-content {
+    max-width: 80%;
+    text-align: center;
+    color: white;
+    padding: 30px;
+    background-color: rgba(53, 77, 113, 0.815);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.info-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.info-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.location-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.location-btn {
+    background: linear-gradient(135deg, rgba(30, 70, 120, 0.9), rgba(50, 120, 180, 0.9));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.location-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(40, 90, 150, 1), rgba(70, 150, 210, 1));
+}
+
+.location-btn:active {
+    transform: translateY(-1px);
+}

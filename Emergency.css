@@ -1,0 +1,555 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color:#ebebeb;
+
+}
+
+p {
+    color:#ebebeb;
+}
+
+body {
+    width: 100%;
+    height: 500vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bolder {
+    font-weight: 600;
+}
+
+
+
+/* ------------------------- navigation 导航栏 -------------------------  */
+
+
+header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+header:hover {
+    background: linear-gradient(to bottom, 
+        rgba(65, 65, 65, 0.9),
+        rgba(65, 65, 65, 0.5),
+        rgba(65, 65, 65, 0)
+    );
+}
+
+
+.navLeft {
+    font-size: 22px;
+    font-weight:600;
+}
+
+.rBox {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 700px;
+}
+
+.search {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 15px;
+    width: 250px;
+    outline: none;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.navRight {
+    display: flex;
+}
+
+.navRight li {
+    margin-left: 50px;
+}
+
+.navRight a {
+    font-size: 17px;
+    font-weight: 300;
+    position: relative;
+    padding: 5px 0;
+    transition:color 0.3s ease;
+}
+
+.navRight a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    transition: width .3s;
+}
+
+.navRight a:hover::after,
+.navRight a.active::after {
+    width: 100%;
+}
+
+
+/* <!-- ------------------------- Main Body 1 正文1 ------------------------- --> */
+video {
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+aside {
+    height: 3350px;
+    padding-top: 50px;
+}
+
+.main {
+    position: absolute;
+    width: 100%;
+    height: 1500px;
+
+}
+
+.main1 {
+    width: 80%;
+    height: 900px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.title {
+    width: 100%;
+    height: 900px;
+    font-size: 90px;
+    font-weight: 400;
+    padding-top: 170px;
+    line-height: 130px;
+    text-align: center;
+}
+
+.title p:nth-child(3) {
+    padding-top: 80px;
+}
+
+.title p:nth-child(3),
+.title p:nth-child(4) {
+    font-size: 30px;
+    font-weight: 100;
+    line-height: 50px;
+}
+
+
+/* <!-- ------------------------- Float Arrow 上下浮动的箭头 ------------------------- --> */
+
+.floatArrow {
+    width: 50px;
+    margin: auto;
+    margin-top: 130px;
+    transform: translateX(-50%);
+    animation: float-animation 2.5s ease-in-out infinite;
+}
+
+.floatArrow img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes float-animation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+/* <!-- ------------------------- Main Body 2 正文2 ------------------------- --> */
+
+.main2 {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 1000px;
+
+}
+
+.title2 {
+    padding-top: 150px;
+}
+
+.title2 p {
+    font-size: 40px;
+    font-weight: 300;
+    text-align: center ;
+    line-height: 70px;
+    color:#ebebeb;
+}
+
+.small p {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 10px 0 50px 50px;
+}
+
+.small p:hover {
+    text-decoration: underline;
+}
+
+
+/* <!-- ------------------------- Main Body 3 正文3 ------------------------- --> */
+
+.main3 {
+    width: 100%;
+    height: 800px;
+    background-color: rgb(246, 252, 255);
+    border-radius: 20px;
+    margin-top: 1000px;
+}
+
+.title3 {
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    margin-top: 10px;
+}
+
+.box {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    height: 600px;
+}
+
+
+.onlineCon {
+    font-size: 50px;
+    margin: 50px 0 100px 30px;
+    text-align: left;
+    color: black;
+}
+
+.follower {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #003c7c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#ebebeb;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 11;
+}
+
+
+.expert {
+    padding: 50px 20px 20px 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.expert:hover {
+    transform: translateY(-10px);
+}
+
+.expert.active {
+    z-index: 6;
+    box-shadow: 0 0 25px rgba(118, 118, 118, 0.5);
+    transform: translateY(-5px);
+}
+
+
+.expert img {
+    height: 350px;
+    width: 230px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.expName {
+    font-size: 20px;
+}
+
+.expert p {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+}
+
+.expert p:nth-child(2),
+.expert p:nth-child(3) {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: left;
+}
+
+.expert p:nth-child(2) {
+    font-size: 15px;
+    font-weight: 100;
+    color: rgb(100, 100, 100);
+}
+
+.expert p:hover {
+    text-decoration: underline;
+}
+
+
+/*****************8 Expert Information 专家信息页！ *********************/
+
+
+.info {
+    position: fixed;
+    right: -55%;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(145deg, #ffffff, #f9f9ff);
+    padding: 40px;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index:15;
+    border-left: 1px solid #f0f0f0;
+    opacity: 0;
+}
+
+.info.active {
+    right: 0;
+    opacity: 1;
+    animation: panel-glow 0.5s forwards;
+}
+
+@keyframes panel-glow {
+    0% {
+        box-shadow: -4px 0 20px rgba(0, 0, 0, .1);
+    }
+
+    100% {
+        box-shadow: -4px 0 30px rgba(0, 0, 0, .3);
+    }
+}
+
+.name {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top:60px;
+    color: #222;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+}
+
+.exTitle{
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0 0 100px 0;
+    text-align: left;
+    color: #444;
+}
+
+.description {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #444;
+    margin: 0 50px 100px 50px;
+}
+
+.details {
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.detail-item {
+    display: flex;
+
+}
+
+.detail-label, .contact {
+    width: 170px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 30px;
+
+}
+
+.detail-value, .contactDetail {
+    flex: 1;
+    font-size: 17px;
+    font-weight: 300;
+    color: #848484;
+    margin-bottom: 30px;
+}
+
+
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: #999;
+    z-index: 15;
+}
+
+.close-btn:hover {
+    color: #171717;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 14;
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.overlay.active {
+    background-color: rgba(0, 0, 0, 0.749);
+    pointer-events: auto;
+}
+
+.clone-expert {
+    position: fixed;
+    left: 140px;
+    bottom: 200px;
+    background-color: rgb(227, 227, 227);
+    width: 280px;
+    height: 480px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: opacity 0.6s ease;
+
+}
+
+.clone-expert.active {
+    z-index: 20;
+}
+
+/***************88 Information Panel End 专家信息页结束！ *****************8*/
+/* .more {
+    width: 100%;
+    height: 50px;
+    display: inline-flex;
+    justify-content: end;
+    text-align: center;
+}
+
+.left,
+.right {
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+
+.right {
+    margin-right: 20px;
+}
+
+.left p,
+.right p {
+    font-size: 20px;
+    color: black;
+}
+
+.left:hover,
+.right:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+.left p:hover,
+.right p:hover {
+    color: rgb(238, 238, 238);
+}
+ */
+
+
+
+/* ------------------------- Footer 脚部 -------------------------  */
+
+/* footer {
+    display: flex;
+    width: 100%;
+    height: 250px;
+    margin-top: 2200px;
+}
+
+.leftBox,
+.rightBox {
+    flex: 1;
+    background: #fffafa;
+    z-index: 16;
+}
+
+.leftBox {
+    border-radius: 20px 0 0 0;
+}
+
+.rightBox {
+    padding-top: 20px;
+    border-radius: 0 20px 0 0;
+}
+
+.rBox1 p {
+    display: inline-block;
+    margin: 20px 10px 15px 330px;
+    color: #171717
+}
+
+.rBox1 img,
+.lBox1 img {
+    width: 25px;
+    vertical-align: middle;
+}
+
+.lBox1 p {
+    display: inline-block;
+    margin: 50px 10px 10px 330px;
+} */
